@@ -8,6 +8,8 @@ Inside your app, create a context_processor.py file.
 from .models import <your_model Class>
 from django.core.paginator import Paginator
 
+- news.html (context_processors.py or you can add this to views.py also)
+
 def <your function>:
   # PAGINATOR code from here
   # ('-date') reversed your date and list from latest date where 'date' is your model fild name.
@@ -24,5 +26,19 @@ def <your function>:
   }
   
   return (context)
+  
+  
+  
+  - innernews.html (views.py)
+  
+  def show_post(request, slug):
+    post = ImageUpload.objects.get(slug=slug)
+ 
+    data = {
+        'post': post,
+    }
+
+    return render(request, 'newsinner.html', data)
+  
 
 ```
